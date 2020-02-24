@@ -12,6 +12,12 @@ public class AcademicModel {
 
     }
 
+    public AcademicModel(String uid, String name, String university) {
+        this.uid = uid;
+        this.name = name;
+        this.university = university;
+    }
+
     public AcademicModel(String uid, String name, String university, String expertise, String job, String description) {
         this.uid = uid;
         this.name = name;
