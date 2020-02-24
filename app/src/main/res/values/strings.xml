@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AcademicMathTree</string>
+
+    <string name="academic_name">Nome</string>
+    <string name="academic_university">Universidade</string>
+    <string name="academic_expertise">Especialidade</string>
+    <string name="academic_job">Trabalho atual</string>
+    <string name="academic_description">Descrição</string>
 </resources>
