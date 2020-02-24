@@ -34,7 +34,8 @@ public class AcademicViewAdapter extends RecyclerView.Adapter<AcademicViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull AcademicViewHolder holder, int position) {
-
+        holder.textValueName.setText(listAcademics.get(position).getName());
+        holder.textValueUniversity.setText(listAcademics.get(position).getUniversity());
     }
 
     public static class AcademicViewHolder extends RecyclerView.ViewHolder {
