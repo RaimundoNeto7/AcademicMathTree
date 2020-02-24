@@ -36,8 +36,13 @@ public class AcademicViewAdapter extends RecyclerView.Adapter<AcademicViewAdapte
     }
 
     public static class AcademicViewHolder extends RecyclerView.ViewHolder {
+        TextView textValueName;
+        TextView textValueUniversity;
+
         AcademicViewHolder(View view){
             super(view);
+            textValueName = view.findViewById(R.id.item_academic_name);
+            textValueUniversity = view.findViewById(R.id.item_academic_university);
         }
     }
 }
