@@ -12,3 +12,9 @@
 /captures
 .externalNativeBuild
 .cxx
+
+.idea/
+
+app/src/androidTest/java/com/example/academicmathtree/ExampleInstrumentedTest.java
+
+app/src/test/java/com/example/academicmathtree/ExampleUnitTest.java
