@@ -1,17 +1,22 @@
 package com.example.academicmathtree;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.academicmathtree.model.AcademicModel;
+
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView listViewAcademics;
-    private ArrayList<String>  listAcademicsRandom;
+    private RecyclerView recyclerViewAcademics;
+    private ArrayList<AcademicModel>  listAcademicsRandom;
     private ArrayAdapter<String> adapterListAcademics;
 
     @Override
@@ -19,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listViewAcademics = findViewById(R.id.listview_academics);
+        recyclerViewAcademics = findViewById(R.id.recyclerview_academics);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerViewAcademics.setLayoutManager(layoutManager);
         initializeListAcademics();
-        adapterListAcademics = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, listAcademicsRandom);
-        listViewAcademics.setAdapter(adapterListAcademics);
 
         populateListAcademics(adapterListAcademics);
     }
@@ -32,11 +37,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateListAcademics(ArrayAdapter adapterListAcademics){
-        listAcademicsRandom.add("Beatriz Albuquerque");
-        listAcademicsRandom.add("Ana Albuquerque");
-        listAcademicsRandom.add("Raimundo Neto");
-        listAcademicsRandom.add("Carol Alguma Coisa");
-
+        listAcademicsRandom.add(new AcademicModel(UUID.randomUUID().toString(), "Beatriz Albuquerque", "Universidade Federal do Amazonas"));
+        listAcademicsRandom.add(new AcademicModel(UUID.randomUUID().toString(), "Raimundo Neto", "Universidade Federal do Amazonas"));
+        listAcademicsRandom.add(new AcademicModel(UUID.randomUUID().toString(), "Alguém de São Paulo", "Universidade de São Paulo"));
+        listAcademicsRandom.add(new AcademicModel(UUID.randomUUID().toString(), "Mulher do Impa", "Instituto de Matemática Pura e Aplicada"));
         adapterListAcademics.notifyDataSetChanged();
     }
 }
