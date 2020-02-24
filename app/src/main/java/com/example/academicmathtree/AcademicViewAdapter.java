@@ -7,14 +7,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.academicmathtree.model.AcademicModel;
+
+import java.util.List;
+
 public class AcademicViewAdapter extends RecyclerView.Adapter<AcademicViewAdapter.AcademicViewHolder> {
 
-    public AcademicViewAdapter() {
+    List<AcademicModel> listAcademics;
+
+    public AcademicViewAdapter(List<AcademicModel> listAcademics) {
+        this.listAcademics = listAcademics;
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.listAcademics.size();
     }
 
     @NonNull
