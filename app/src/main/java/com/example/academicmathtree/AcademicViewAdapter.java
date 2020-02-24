@@ -1,5 +1,6 @@
 package com.example.academicmathtree;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -27,7 +28,8 @@ public class AcademicViewAdapter extends RecyclerView.Adapter<AcademicViewAdapte
     @NonNull
     @Override
     public AcademicViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_academic, parent, false);
+        return new AcademicViewHolder(view);
     }
 
     @Override
