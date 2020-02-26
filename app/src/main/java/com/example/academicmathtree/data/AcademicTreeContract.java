@@ -20,6 +20,7 @@ public class AcademicTreeContract {
         public static final String COLUMN_EXPERTISE = "expertise";
         public static final String COLUMN_JOB = "job";
         public static final String COLUMN_DESCRIPTION = "description";
+        public static final String COLUMN_ROOT = "root";
     }
 
     public static final String PATH_GUIDE = "guide";
