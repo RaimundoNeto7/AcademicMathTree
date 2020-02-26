@@ -22,4 +22,16 @@ public class AcademicContract {
         public static final String COLUMN_JOB = "job";
         public static final String COLUMN_DESCRIPTION = "description";
     }
+
+    public static final String PATH_GUIDE = "guide";
+    public static final class GuideEntry implements BaseColumns {
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon()
+                .appendPath(PATH_GUIDE)
+                .build();
+
+        public static final String TABLE_NAME = "guide";
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_ID_TEARCHER = "idteacher";
+        public static final String COLUMN_ID_STUDENT = "idstudent";
+    }
 }
