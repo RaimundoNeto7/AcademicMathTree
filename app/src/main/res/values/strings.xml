@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">AcademicMathTree</string>
-    <string name="app_label">Árvore Genealógica Acadêmica</string>
+    <string name="app_name">Árvore Genealógica Acadêmica</string>
 
     <string name="academic_name">Nome</string>
     <string name="academic_university">Universidade</string>
