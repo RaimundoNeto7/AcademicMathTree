@@ -17,6 +17,16 @@ public class AcademicTreeDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        final String SQL_CREATE_WEATHER_TABLE =
+                "CREATE TABLE " + AcademicEntry.TABLE_NAME + " (" +
+                        AcademicEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        AcademicEntry.COLUMN_NAME + " TEXT NOT NULL, " +
+                        AcademicEntry.COLUMN_UNIVERSITY + " TEXT NOT NULL, " +
+                        AcademicEntry.COLUMN_EXPERTISE + " TEXT NOT NULL, " +
+                        AcademicEntry.COLUMN_JOB + " TEXT NOT NULL, " +
+                        AcademicEntry.COLUMN_DESCRIPTION + " TEXT NOT NULL) ";
+
+        db.execSQL(SQL_CREATE_WEATHER_TABLE);
 
     }
 

@@ -15,7 +15,6 @@ public class AcademicTreeContract {
                 .build();
 
         public static final String TABLE_NAME = "academic";
-        public static final String COLUMN_ID = "id";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_UNIVERSITY = "university";
         public static final String COLUMN_EXPERTISE = "expertise";
@@ -30,7 +29,6 @@ public class AcademicTreeContract {
                 .build();
 
         public static final String TABLE_NAME = "guide";
-        public static final String COLUMN_ID = "id";
         public static final String COLUMN_ID_TEARCHER = "idteacher";
         public static final String COLUMN_ID_STUDENT = "idstudent";
     }
