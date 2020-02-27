@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailAcademicActivity" />
+        <provider
+            android:authorities="com.example.academicmathtree"
+            android:name=".data.AcademicTreeProvider"
+            android:exported="false"/>
     </application>
 
 </manifest>
