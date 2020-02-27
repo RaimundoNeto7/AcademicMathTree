@@ -4,6 +4,7 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
@@ -72,9 +73,22 @@ public class AcademicTreeProvider extends ContentProvider {
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
-        
+
         cursor.setNotificationUri(Objects.requireNonNull(getContext()).getContentResolver(), uri);
         return cursor;
+    }
+
+    @Override
+    public int bulkInsert(@NonNull Uri uri, @NonNull ContentValues[] values) {
+        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        switch (matcher.match(uri)) {
+            case CODE_ACADEMIC: {
+                return 0;
+            }
+            default:
+                return super.bulkInsert(uri, values);
+        }
     }
 
     @Nullable
