@@ -5,8 +5,8 @@ import android.provider.BaseColumns;
 
 public class AcademicTreeContract {
 
-    public static final String CONTENT_AUTHORITY = "com.example.academictree";
-    public static final Uri BASE_CONTENT_URI = Uri.parse(CONTENT_AUTHORITY);
+    public static final String CONTENT_AUTHORITY = "com.example.academicmathtree";
+    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     public static final String PATH_ACADEMIC = "academic";
     public static final class AcademicEntry implements BaseColumns {
