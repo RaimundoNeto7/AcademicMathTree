@@ -84,7 +84,23 @@ public class AcademicTreeProvider extends ContentProvider {
 
         switch (matcher.match(uri)) {
             case CODE_ACADEMIC: {
-                return 0;
+                db.beginTransaction();
+                int rowsInserted = 0;
+                try {
+                    for (ContentValues value : values) {
+                        long _id = db.insert(AcademicEntry.TABLE_NAME, null, value);
+                        if(_id != -1){
+                            rowsInserted++;
+                        }
+                    }
+                }
+                finally {
+                    db.endTransaction();
+                }
+                if(rowsInserted > 0) {
+                    Objects.requireNonNull(getContext()).getContentResolver().notifyChange(uri, null);
+                }
+                return rowsInserted;
             }
             default:
                 return super.bulkInsert(uri, values);
