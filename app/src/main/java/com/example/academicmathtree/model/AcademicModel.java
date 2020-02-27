@@ -1,7 +1,7 @@
 package com.example.academicmathtree.model;
 
 public class AcademicModel {
-    private String uid;
+    private int id;
     private String name;
     private String university;
     private String expertise;
@@ -13,14 +13,8 @@ public class AcademicModel {
 
     }
 
-    public AcademicModel(String uid, String name, String university) {
-        this.uid = uid;
-        this.name = name;
-        this.university = university;
-    }
-
-    public AcademicModel(String uid, String name, String university, String expertise, String job, String description, Boolean isRoot) {
-        this.uid = uid;
+    public AcademicModel(int id, String name, String university, String expertise, String job, String description, Boolean isRoot) {
+        this.id = id;
         this.name = name;
         this.university = university;
         this.expertise = expertise;
@@ -29,12 +23,12 @@ public class AcademicModel {
         this.isRoot = isRoot;
     }
 
-    public String getUid() {
-        return uid;
+    public int getId() {
+        return id;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
