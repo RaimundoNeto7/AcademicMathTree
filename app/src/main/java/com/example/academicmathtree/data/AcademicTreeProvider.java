@@ -9,6 +9,8 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Objects;
+
 import static com.example.academicmathtree.data.AcademicTreeContract.*;
 
 public class AcademicTreeProvider extends ContentProvider {
@@ -52,10 +54,26 @@ public class AcademicTreeProvider extends ContentProvider {
                 );
                 break;
             }
+            case CODE_ACADEMIC_BY_ID: {
+
+                String id = uri.getLastPathSegment();
+
+                cursor = dbHelper.getReadableDatabase().query(
+                        AcademicEntry.TABLE_NAME,
+                        projection,
+                        AcademicEntry._ID + " = ?",
+                         new String[] {id},
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
-        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        
+        cursor.setNotificationUri(Objects.requireNonNull(getContext()).getContentResolver(), uri);
         return cursor;
     }
 
