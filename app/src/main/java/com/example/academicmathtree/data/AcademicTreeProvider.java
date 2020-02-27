@@ -9,6 +9,8 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import static com.example.academicmathtree.data.AcademicTreeContract.*;
+
 public class AcademicTreeProvider extends ContentProvider {
 
     public static final int CODE_ACADEMIC = 100;
@@ -19,10 +21,10 @@ public class AcademicTreeProvider extends ContentProvider {
 
     private static UriMatcher buildUriMatcher() {
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
-        final String authority = AcademicTreeContract.CONTENT_AUTHORITY;
+        final String authority = CONTENT_AUTHORITY;
 
-        matcher.addURI(authority, AcademicTreeContract.PATH_ACADEMIC, CODE_ACADEMIC);
-        matcher.addURI(authority, AcademicTreeContract.PATH_ACADEMIC + "/#", CODE_ACADEMIC_BY_ID);
+        matcher.addURI(authority, PATH_ACADEMIC, CODE_ACADEMIC);
+        matcher.addURI(authority, PATH_ACADEMIC + "/#", CODE_ACADEMIC_BY_ID);
 
         return matcher;
     }
@@ -36,7 +38,25 @@ public class AcademicTreeProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        return null;
+        Cursor cursor = null;
+        switch (matcher.match(uri)) {
+            case CODE_ACADEMIC: {
+                cursor = dbHelper.getReadableDatabase().query(
+                    AcademicEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+        }
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        return cursor;
     }
 
     @Nullable
