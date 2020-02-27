@@ -2,6 +2,8 @@ package com.example.academicmathtree.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.academicmathtree.data.AcademicTreeContract.AcademicEntry;
 import com.example.academicmathtree.model.AcademicModel;
@@ -18,10 +20,11 @@ public class AcademicStaticData {
 
         ContentValues values = getAcademicValues(new AcademicModel(1, "Raimundo Neto", "UFAM", "Science Computer", "Software Engineer", "Handsome", true));
         contentValues.add(values);
-
-        context.getContentResolver().bulkInsert(
+        int rowsInserted = context.getContentResolver().bulkInsert(
                 AcademicEntry.CONTENT_URI,
                 contentValues.toArray(new ContentValues[contentValues.size()])
         );
+
+        Log.e("AcademicProvider", "Rows inserted: " + rowsInserted);
     }
 }
