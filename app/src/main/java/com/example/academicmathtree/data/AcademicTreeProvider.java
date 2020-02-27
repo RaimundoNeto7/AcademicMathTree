@@ -23,13 +23,14 @@ public class AcademicTreeProvider extends ContentProvider {
 
         matcher.addURI(authority, AcademicTreeContract.PATH_ACADEMIC, CODE_ACADEMIC);
         matcher.addURI(authority, AcademicTreeContract.PATH_ACADEMIC + "/#", CODE_ACADEMIC_BY_ID);
-        
+
         return matcher;
     }
 
     @Override
     public boolean onCreate() {
-        return false;
+        dbHelper = new AcademicTreeDbHelper(getContext());
+        return true;
     }
 
     @Nullable
