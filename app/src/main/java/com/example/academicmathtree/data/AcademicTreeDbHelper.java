@@ -28,7 +28,6 @@ public class AcademicTreeDbHelper extends SQLiteOpenHelper {
                         AcademicEntry.COLUMN_ROOT + " BOOLEAN NOT NULL) ";
 
         db.execSQL(SQL_CREATE_WEATHER_TABLE);
-
     }
 
     @Override

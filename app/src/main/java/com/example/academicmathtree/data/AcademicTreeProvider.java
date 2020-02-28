@@ -41,7 +41,7 @@ public class AcademicTreeProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        Cursor cursor = null;
+        Cursor cursor;
         switch (matcher.match(uri)) {
             case CODE_ACADEMIC: {
                 cursor = dbHelper.getReadableDatabase().query(
@@ -93,6 +93,7 @@ public class AcademicTreeProvider extends ContentProvider {
                             rowsInserted++;
                         }
                     }
+                    db.setTransactionSuccessful();
                 }
                 finally {
                     db.endTransaction();
