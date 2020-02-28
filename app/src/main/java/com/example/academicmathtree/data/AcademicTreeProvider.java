@@ -74,6 +74,33 @@ public class AcademicTreeProvider extends ContentProvider {
                 );
                 break;
             }
+            case CODE_GUIDE: {
+                cursor = dbHelper.getReadableDatabase().query(
+                        GuideEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
+            case CODE_GUIDE_BY_TEACHER: {
+
+                String id = uri.getLastPathSegment();
+
+                cursor = dbHelper.getReadableDatabase().query(
+                        GuideEntry.TABLE_NAME,
+                        projection,
+                        GuideEntry.COLUMN_ID_TEARCHER + " = ?",
+                        new String[] {id},
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -93,6 +120,26 @@ public class AcademicTreeProvider extends ContentProvider {
                 try {
                     for (ContentValues value : values) {
                         long _id = db.insert(AcademicEntry.TABLE_NAME, null, value);
+                        if(_id != -1){
+                            rowsInserted++;
+                        }
+                    }
+                    db.setTransactionSuccessful();
+                }
+                finally {
+                    db.endTransaction();
+                }
+                if(rowsInserted > 0) {
+                    Objects.requireNonNull(getContext()).getContentResolver().notifyChange(uri, null);
+                }
+                return rowsInserted;
+            }
+            case CODE_GUIDE: {
+                db.beginTransaction();
+                int rowsInserted = 0;
+                try {
+                    for (ContentValues value : values) {
+                        long _id = db.insert(GuideEntry.TABLE_NAME, null, value);
                         if(_id != -1){
                             rowsInserted++;
                         }
