@@ -25,7 +25,7 @@ public class AcademicTreeDbHelper extends SQLiteOpenHelper {
                 AcademicEntry.COLUMN_EXPERTISE + " TEXT NOT NULL, " +
                 AcademicEntry.COLUMN_JOB + " TEXT NOT NULL, " +
                 AcademicEntry.COLUMN_DESCRIPTION + " TEXT NOT NULL, " +
-                AcademicEntry.COLUMN_ROOT + " BOOLEAN NOT NULL) ";
+                AcademicEntry.COLUMN_ID_ROOT + " INTEGER NOT NULL) ";
 
         db.execSQL(SQL_CREATE_ACADEMIC_TABLE);
 

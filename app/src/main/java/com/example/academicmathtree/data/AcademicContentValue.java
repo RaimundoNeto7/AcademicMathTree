@@ -16,7 +16,7 @@ public class AcademicContentValue {
         contentValues.put(AcademicEntry.COLUMN_EXPERTISE, academicModel.getExpertise());
         contentValues.put(AcademicEntry.COLUMN_JOB, academicModel.getJob());
         contentValues.put(AcademicEntry.COLUMN_DESCRIPTION, academicModel.getDescription());
-        contentValues.put(AcademicEntry.COLUMN_ROOT, academicModel.getRoot());
+        contentValues.put(AcademicEntry.COLUMN_ID_ROOT, academicModel.getIdRoot());
         return  contentValues;
     }
 

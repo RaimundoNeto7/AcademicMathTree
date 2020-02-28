@@ -7,20 +7,20 @@ public class AcademicModel {
     private String expertise;
     private String job;
     private String description;
-    private Boolean isRoot;
+    private int idRoot;
 
     public AcademicModel(){
 
     }
 
-    public AcademicModel(int id, String name, String university, String expertise, String job, String description, Boolean isRoot) {
+    public AcademicModel(int id, String name, String university, String expertise, String job, String description, int idRoot) {
         this.id = id;
         this.name = name;
         this.university = university;
         this.expertise = expertise;
         this.job = job;
         this.description = description;
-        this.isRoot = isRoot;
+        this.idRoot = idRoot;
     }
 
     public int getId() {
@@ -71,11 +71,11 @@ public class AcademicModel {
         this.description = description;
     }
 
-    public Boolean getRoot() {
-        return isRoot;
+    public int getIdRoot() {
+        return idRoot;
     }
 
-    public void setRoot(Boolean root) {
-        isRoot = root;
+    public void setIdRoot(int idRoot) {
+        this.idRoot = idRoot;
     }
 }
