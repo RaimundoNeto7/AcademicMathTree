@@ -18,6 +18,8 @@ public class AcademicTreeProvider extends ContentProvider {
 
     public static final int CODE_ACADEMIC = 100;
     public static final int CODE_ACADEMIC_BY_ID = 101;
+    public static final int CODE_ACADEMIC_ROOTS = 102;
+    public static final int CODE_ACADEMIC_BY_ROOT = 103;
     public static final int CODE_GUIDE = 200;
     public static final int CODE_GUIDE_BY_TEACHER = 201;
 
@@ -30,6 +32,8 @@ public class AcademicTreeProvider extends ContentProvider {
 
         matcher.addURI(authority, PATH_ACADEMIC, CODE_ACADEMIC);
         matcher.addURI(authority, PATH_ACADEMIC + "/#", CODE_ACADEMIC_BY_ID);
+        matcher.addURI(authority, PATH_ACADEMIC + "/" + AcademicEntry.COLUMN_ID_ROOT, CODE_ACADEMIC_ROOTS);
+        matcher.addURI(authority, PATH_ACADEMIC + "/" + AcademicEntry.COLUMN_ID_ROOT + "/#", CODE_ACADEMIC_BY_ROOT);
         matcher.addURI(authority, PATH_GUIDE, CODE_GUIDE);
         matcher.addURI(authority, PATH_GUIDE + "/" + GuideEntry.COLUMN_ID_TEARCHER + "/#", CODE_GUIDE_BY_TEACHER);
 
@@ -68,6 +72,33 @@ public class AcademicTreeProvider extends ContentProvider {
                         projection,
                         AcademicEntry._ID + " = ?",
                          new String[] {id},
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
+            case CODE_ACADEMIC_ROOTS: {
+                cursor = dbHelper.getReadableDatabase().query(
+                        AcademicEntry.TABLE_NAME,
+                        projection,
+                        AcademicEntry._ID + " = " + AcademicEntry.COLUMN_ID_ROOT,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
+            case CODE_ACADEMIC_BY_ROOT: {
+
+                String id = uri.getLastPathSegment();
+
+                cursor = dbHelper.getReadableDatabase().query(
+                        AcademicEntry.TABLE_NAME,
+                        projection,
+                        AcademicEntry.COLUMN_ID_ROOT + " = ? ",
+                        new String[] {id},
                         null,
                         null,
                         sortOrder
