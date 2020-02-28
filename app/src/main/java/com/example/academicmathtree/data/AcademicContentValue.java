@@ -8,6 +8,7 @@ import com.example.academicmathtree.model.AcademicModel;
 public class AcademicContentValue {
     public static ContentValues getAcademicValues(AcademicModel academicModel) {
         ContentValues contentValues = new ContentValues();
+        contentValues.put(AcademicEntry._ID, academicModel.getId());
         contentValues.put(AcademicEntry.COLUMN_NAME, academicModel.getName());
         contentValues.put(AcademicEntry.COLUMN_UNIVERSITY, academicModel.getUniversity());
         contentValues.put(AcademicEntry.COLUMN_EXPERTISE, academicModel.getExpertise());
