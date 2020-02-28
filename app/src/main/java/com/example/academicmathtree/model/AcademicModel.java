@@ -1,5 +1,10 @@
 package com.example.academicmathtree.model;
 
+import android.database.Cursor;
+
+import com.example.academicmathtree.data.AcademicTreeContract;
+import com.example.academicmathtree.data.AcademicTreeContract.AcademicEntry;
+
 public class AcademicModel {
     private int id;
     private String name;
@@ -21,6 +26,16 @@ public class AcademicModel {
         this.job = job;
         this.description = description;
         this.idRoot = idRoot;
+    }
+
+    public AcademicModel(Cursor cursor){
+        this.id = cursor.getInt(cursor.getColumnIndex(AcademicEntry._ID));
+        this.name = cursor.getString(cursor.getColumnIndex(AcademicEntry.COLUMN_NAME));
+        this.university = cursor.getString(cursor.getColumnIndex(AcademicEntry.COLUMN_UNIVERSITY));
+        this.expertise = cursor.getString(cursor.getColumnIndex(AcademicEntry.COLUMN_EXPERTISE));
+        this.job = cursor.getString(cursor.getColumnIndex(AcademicEntry.COLUMN_JOB));
+        this.description = cursor.getString(cursor.getColumnIndex(AcademicEntry.COLUMN_DESCRIPTION));
+        this.idRoot = cursor.getInt(cursor.getColumnIndex(AcademicEntry.COLUMN_ID_ROOT));
     }
 
     public int getId() {
