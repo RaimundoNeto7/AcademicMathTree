@@ -33,7 +33,7 @@ public class AcademicTreeDbHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + GuideEntry.TABLE_NAME + " (" +
                 GuideEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 GuideEntry.COLUMN_ID_TEARCHER + " INTEGER NOT NULL, " +
-                GuideEntry.COLUMN_ID_STUDENT + "INTEGER NOT NULL)";
+                GuideEntry.COLUMN_ID_STUDENT + " INTEGER NOT NULL)";
 
         db.execSQL(SQL_CREATE_GUIDE_TABLE);
     }
