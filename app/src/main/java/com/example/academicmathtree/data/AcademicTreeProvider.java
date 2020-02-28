@@ -18,6 +18,8 @@ public class AcademicTreeProvider extends ContentProvider {
 
     public static final int CODE_ACADEMIC = 100;
     public static final int CODE_ACADEMIC_BY_ID = 101;
+    public static final int CODE_GUIDE = 200;
+    public static final int CODE_GUIDE_BY_TEACHER = 201;
 
     private static final UriMatcher matcher = buildUriMatcher();
     private AcademicTreeDbHelper dbHelper;
@@ -28,6 +30,8 @@ public class AcademicTreeProvider extends ContentProvider {
 
         matcher.addURI(authority, PATH_ACADEMIC, CODE_ACADEMIC);
         matcher.addURI(authority, PATH_ACADEMIC + "/#", CODE_ACADEMIC_BY_ID);
+        matcher.addURI(authority, PATH_GUIDE, CODE_GUIDE);
+        matcher.addURI(authority, PATH_GUIDE + "/" + GuideEntry.COLUMN_ID_TEARCHER + "/#", CODE_GUIDE_BY_TEACHER);
 
         return matcher;
     }
